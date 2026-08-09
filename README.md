@@ -2,7 +2,7 @@
 
 A fast-paced interactive web game designed to test user reflexes and clicking speed, built with a focus on **DOM manipulation** and **real-time state synchronization**.
 
-👉 **[Play the Game Here](https://tlamt.github.io)**
+👉 **[Play the Game Here](https://click-game-tan.vercel.app)**
 
 ---
 
@@ -18,7 +18,7 @@ A fast-paced interactive web game designed to test user reflexes and clicking sp
 *   **Logic**: Vanilla JavaScript (ES6+)
 *   **Styling**: CSS3 (Animations & Hover Effects)
 *   **Structure**: HTML5
-*   **Deployment**: GitHub Pages
+*   **Deployment**: Vercel
 
 ## 🧠 Key Challenges & Solutions
 
