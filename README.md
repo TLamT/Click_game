@@ -1,49 +1,123 @@
-# 🖱️ Rapid Clicker Challenge
+# 🖱️ Click Challenge
 
-A fast-paced interactive web game designed to test user reflexes and clicking speed, built with a focus on **DOM manipulation** and **real-time state synchronization**.
+> 反應速度訓練遊戲 — A reaction-speed training game designed for **elderly people and people with disabilities**.
+
+This is a simple, accessible click/tap game built to help train and maintain reaction speed. The goal is straightforward: **tap the target as many times as you can before the 30-second timer runs out.**
 
 👉 **[Play the Game Here](https://click-game-tan.vercel.app)**
 
 ---
 
-## 🚀 Engineering Highlights
+## 🎯 Purpose
 
-*   **Precise Timer Logic**: Implemented a countdown system using `setInterval` to manage game duration and ensure accurate score tracking.
-*   **Dynamic DOM Updates**: Utilized high-frequency DOM manipulation to reflect score changes instantly as the user interacts with the UI.
-*   **Game State Management**: Built a robust state machine to handle "Idle", "Playing", and "Game Over" phases, ensuring a smooth user flow.
-*   **Performance Optimization**: Minimized layout thrashing by optimizing event listeners for rapid user inputs.
+The game is designed as a **reaction-speed training tool**, not a competitive speed-clicking benchmark:
 
-## 🛠️ Tech Stack
-
-*   **Logic**: Vanilla JavaScript (ES6+)
-*   **Styling**: CSS3 (Animations & Hover Effects)
-*   **Structure**: HTML5
-*   **Deployment**: Vercel
-
-## 🧠 Key Challenges & Solutions
-
-### 1. Handling High-Frequency Inputs
-**Challenge**: Rapid clicking can sometimes lead to inconsistent score updates if not handled correctly.
-**Solution**: Implemented a robust event handling mechanism that ensures every valid click is captured and processed without blocking the main UI thread.
-
-### 2. Synchronization of Timer and Score
-**Challenge**: Ensuring the game stops exactly when the timer reaches zero while disabling further inputs.
-**Solution**: Integrated a "Game Controller" function that clears intervals and removes event listeners immediately upon expiration of the timer to prevent "late-click" scoring.
-
-## 📅 Roadmap
-
-- [ ] **Leaderboard**: Integrate **Firebase** or **LocalStorage** to save top scores.
-- [ ] **Difficulty Levels**: Add different modes with varying target sizes or shorter time limits.
-- [ ] **Sound Effects**: Implement the Web Audio API for satisfying click feedback.
-- [ ] **Visual Polish**: Add a "Combo" multiplier system for consecutive fast clicks.
+- **For the elderly** — keeps hand–eye coordination and fine motor response active in a low-pressure, fun way.
+- **For people with disabilities** — every interaction is a single, gentle tap. No double-clicks, no drag, no keyboard shortcuts, no precise aim required.
+- **Progress feedback** — clear score, combo, and personal best tracking give users a sense of improvement over time.
 
 ---
 
-### Getting Started
+## ✨ Features
+
+- ⏱️ **30-second countdown** — one round is short enough to stay engaging and easy to repeat.
+- 🎯 **Large, easy-to-hit target** — an 84&nbsp;px circle that is far bigger than typical game targets, and never spawns off-screen.
+- 🔥 **Combo streak** — quick successive hits build a combo counter for extra motivation.
+- ✏️ **Player name** — enter your name before a round so your scores are credited to you.
+- ⏱️ **Adjustable round time** — choose from **5 to 120 seconds** to match each person's ability level.
+- 🏆 **Leaderboard** — the top 8 scores are saved locally (per browser) with the player's name.
+- 🏅 **Best score** — your personal best is tracked separately and highlighted on a new record.
+- 🖼️ **Custom target image** — users (or carers) can upload their own image, e.g. a familiar photo, to make the target more recognizable.
+- 🌓 **High-contrast dark theme** — large type, clear color separation, and a distraction-free layout.
+- 📱 **Touch-friendly** — works on phones and tablets; no double-tap zoom interference.
+
+---
+
+## ♿ Accessibility-first Design
+
+The interface was deliberately designed around the needs of its audience:
+
+| Consideration | Implementation |
+| --- | --- |
+| Single simple interaction | One button — just tap the target |
+| Generous target size | 84&nbsp;px circle, clamped inside the play area |
+| Smooth, predictable motion | Target glides between positions instead of teleporting |
+| Clear visual feedback | Pop animation + live score/combo counters |
+| Screen-reader support | Accessible labels (`aria-label`, semantic buttons) |
+| Keyboard users | Visible focus outlines on all controls |
+| Motion-safe defaults | Subtle, short animations; no flashing or strobing |
+| Reduced motor load | No double-click, no drag, no timing-critical multi-tap |
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [React](https://react.dev/) 19
+- **Build tool**: Create React App (react-scripts 5)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) + custom CSS3 animations
+- **Testing**: Jest + React Testing Library
+- **Deployment**: [Vercel](https://vercel.com)
+
+---
+
+## 🚀 Getting Started
 
 ```bash
-# Clone the repository
-git clone https://github.com
+# 1. Install dependencies
+npm install
 
-# Open index.html in your browser
-open index.html
+# 2. Run the development server
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to play locally.
+
+### Testing
+
+```bash
+npm test
+```
+
+Runs the test suite (game flow, timer, scoring, and best-score persistence).
+
+### Production build
+
+```bash
+npm run build
+```
+
+Builds an optimized bundle into the `build/` folder, ready to deploy.
+
+---
+
+## 🗺️ Roadmap
+
+Ideas to make the game even more suitable for its audience:
+
+- [ ] **Adjustable difficulty** — target size options (round time is already adjustable from 5–120s).
+- [ ] **Reduced-motion mode** — respect `prefers-reduced-motion` for users with vestibular sensitivity.
+- [ ] **Audio & haptic feedback** — gentle sound / vibration on each hit.
+- [ ] **Progress tracking** — a simple chart of best scores over days/weeks to show improvement.
+- [ ] **High-contrast & color-blind themes** — alternative visual schemes.
+- [ ] **Single-switch support** — compatibility with adaptive switches (spacebar / external switch input).
+- [ ] **Traditional Chinese UI** — 繁體中文介面，方便本地長者使用。
+- [ ] **Cross-device leaderboard** — sync scores via a backend so carers can compare across devices.
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+├── App.js            # Game logic & UI (idle / playing / game over states)
+├── App.test.js       # Automated tests for the game flow
+├── index.css         # Theme, layout, animations, accessibility styles
+├── index.js          # App entry point
+└── ...
+```
+
+---
+
+## 📄 License
+
+Feel free to use, modify, and share this project for educational and non-commercial purposes.
